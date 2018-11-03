@@ -33,7 +33,7 @@ var optionsServeCommands = {
     }
 };
 app.get('/', function(req, res) {
-    res.render('commands.ejs', {data: '' });
+    res.redirect('/commands');
 });
 app.get('/commands', function(req, res) {
     request(optionsGetCommands, function (error, response, body) {

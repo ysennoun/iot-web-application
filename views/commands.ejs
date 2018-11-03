@@ -93,11 +93,17 @@
             } );
             $('#commands-data-table tbody').on( 'click', 'button', function () {
                 var line = table.row( $(this).parents('tr') ).data();
+                var waitBox = bootbox.dialog({
+                            closeButton: false,
+                            message: "Wait response from waitress..."
+                        });
+                waitBox.fadeIn();
                 $.ajax({
-                    url: "http://localhost:8080/commands",
+                    url: "http://localgggghost:8080/commands",
                     data: {id: line[0], drink: line[1]},
                     type: "POST",
                     success: function(data){
+                        waitBox.fadeOut();
                         bootbox.dialog({
                             message: "Waitress accepted to serve command !",
                             closeButton: false,
@@ -111,6 +117,7 @@
                         });
                     },
                     error: function() {
+                        waitBox.fadeOut();
                         bootbox.dialog({
                             message: "Waitress cannot serve the command so far, retry later !",
                             closeButton: false,

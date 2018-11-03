@@ -1,37 +1,39 @@
+ # Web server for Connected Bar
+ 
+ Fist you need to install node js on your machine.
+ 
+ ## Stack
+ 
+ We use : 
+ 
+ - node js to create a web server that request a cloud (e.g : Azure)
+ - jQuery 3, bootstrap 4 to generate web pages
+ 
  utilisation de boostratp 4, jquery 3 pour les pages web
  
- nodejs
  
- npm init
- npm install express
- npm install ejs
- npm install body-parser
+ ### node js
  
- mkdir views
- mv commands.html views/commands.ejs
- mv statistics.html views/statistics.ejs
+ We installed the following modules for node js : 
  
- mkdir public
- mv connected-bar-style.css public/
+ - express
+ - ejs
+ - body-parser
  
- touch server.js
  
-    var express = require('express');
-    var app = express();
-    app.use(express.static(__dirname + '/public')); //for css
-    app.set('view engine', 'ejs'); //to use ejs files in views
-    
-    app.get('/commands', function(req, res) {
-        res.render('commands.ejs');
-    });
-    app.get('/statistics', function(req, res) {
-        res.render('statistics.ejs');
-    });
-    app.use(function(req, res, next){
-        res.setHeader('Content-Type', 'text/plain');
-        res.status(404).send('Page introuvable !');
-    });
-    app.listen(8080);
+ ## Web pages
+ 
+ There are two pages : 
+ 
+ - Page commands that shows all on-going commands. It is possible to indicate to waitress the command is ready.
+ - Page statistics that shows some statistics to server commands (for instance how long does it take to serve a drink ?)
+ 
+ ## Run server
+ 
+ Execute the following commands on a terminal to run the node js server : 
+ 
+    npm install 
+    npm start 
 
 
 npm start server.js
