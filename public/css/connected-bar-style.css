@@ -1,0 +1,22 @@
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+.container {
+  min-height: 100%;
+  margin-bottom: -30px;
+}
+
+.push {
+  height: 30px;
+}
+
+.navbar {
+    background-color: #424661;
+}
+
+.footer{
+   color: #424661;
+   background-color: #7279a8;
+}
