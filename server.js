@@ -8,7 +8,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.set('view engine', 'ejs');
 
 var optionsGetCommands = {
-  url: "https://connected-bar.azure-api.net/connected-bar-function-app/v1/GetCommand",
+  url: "https://connected-bar.azure-api.net/connected-bar-function-app/GetCommand",
   json: true,
   headers: {
     'User-Agent': 'request',
@@ -18,7 +18,7 @@ var optionsGetCommands = {
   }
 };
 var optionsServeCommands = {
-    url: "https://connected-bar.azure-api.net/connected-bar-function-app/v1/ServeCommand",
+    url: "https://connected-bar.azure-api.net/connected-bar-function-app/ServeCommand",
     json: true,
     method: "POST",
     headers: {
@@ -41,7 +41,7 @@ app.get('/commands', function(req, res) {
             obj = JSON.parse(body);
             var commands = [];
             Object.keys(obj).forEach(function(value){
-              var command = [ obj[value].id, obj[value].drink];
+              var command = [ obj[value].id, obj[value].drink, obj[value].sendTime];
               commands.push(command);
             });
             res.render('commands.ejs', {data: commands});
